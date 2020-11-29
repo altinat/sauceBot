@@ -1,9 +1,8 @@
-const config = require('../config.json'),
   sagiri = require('sagiri'),
   isImageUrl = require('is-image-url'),
   path = require('path'),
   notSupportedExts = new Set(['gif']),
-  search = new sagiri(config.saucenaoAPIKey, {
+  search = new sagiri(process.env.saucenaoAPIKey, {
     numRes: 1
   });
 
@@ -38,10 +37,10 @@ exports.run = (bot, msg, args) => {
             }, {
               'name': 'ตัวละคร',
               'value': results.characters
-            } {
+            }, {
               'name': 'เจ้าของผลงาน',
               'value': results.creator
-            } {
+            }, {
               'name': 'ที่มา',
               'value': `${results.site} - ${results.url}`
             }],
