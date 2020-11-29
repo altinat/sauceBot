@@ -3,6 +3,7 @@ const fs = require('fs');
 const { Client } = require('discord.js');
 const discordClient = new Client();
 const commandsMap = new Map();
+// const SauceNAO = require('saucenao')
 
 const config = (() => {
   if (!fs.existsSync('config.json')) {
