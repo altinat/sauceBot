@@ -33,6 +33,15 @@ exports.run = (bot, msg, args) => {
               'name': 'ความคล้าย',
               'value': `${results.similarity}%`
             }, {
+              'name': 'มาจาก',
+              'value': results.material
+            }, {
+              'name': 'ตัวละคร',
+              'value': results.characters
+            } {
+              'name': 'เจ้าของผลงาน',
+              'value': results.creator
+            } {
               'name': 'ที่มา',
               'value': `${results.site} - ${results.url}`
             }],
