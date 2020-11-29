@@ -15,9 +15,9 @@ exports.run = (bot, msg, args) => {
       let results = {
         thumbnail: data.original.header.thumbnail,
         similarity: data.similarity,
-        material: data.original.data.material || 'none',
-        characters: data.original.data.characters || 'none',
-        creator: data.original.data.creator || 'none',
+        material: data.original.data.material || 'ไม่พบ',
+        characters: data.original.data.characters || 'ไม่พบ',
+        creator: data.original.data.creator || 'ไม่พบ',
         site: data.site,
         url: data.url
       };
@@ -25,31 +25,31 @@ exports.run = (bot, msg, args) => {
       if (minSimilarity <= ~~results.similarity) {
         msg.channel.send({
           embed: {
-            'title': 'หาวาร์ป',
-            'image': {
+            title: 'นักหาวาร์ป',
+            image: {
               url: results.thumbnail
             },
-            'fields': [{
-              'name': 'ความคล้าย',
-              'value': `${results.similarity}%`
-            }, {
-<<<<<<< HEAD
-              'name': 'มาจาก',
-              'value': results.material
-            }, {
-              'name': 'ตัวละคร',
-              'value': results.characters
-            }, {
-              'name': 'เจ้าของผลงาน',
-              'value': results.creator
-            }, {
-=======
->>>>>>> parent of 3715864... v0.2
-              'name': 'ที่มา',
-              'value': `${results.site} - ${results.url}`
+            thumbnail: {
+              url: results.thumbnail
+            },
+            description: `มาจาก: **${results.material} **\n` +
+              `ตัวละคร: **${results.characters} **\n` +
+              `เจ้าของผลงาน: **${results.creator} **\n` +
+              `ที่มา: **[${results.site}](${results.url}) **`,
+              image: {
+              url: results.thumbnail
+            },
+            fields: [{
+              name: 'ความเป็นไปได้อื่น ๆ',
+              value: "ยังไม่เสร็จ"
             }],
-            'color': 0xff0000
-          }
+            color: 0xff0000,
+			footer: {
+			icon_url: msg.author.displayAvatarURL,
+			text: `รีเควสโดย ${msg.author.username} \n` +
+			`ความเป็นไปได้: ${results.similarity}% \n`,
+			},
+          },
         });
       } else {
         console.error('ไม่พบผลลัพธ์');

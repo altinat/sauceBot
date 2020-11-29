@@ -2,7 +2,7 @@
   "name": "saucebot",
   "version": "1.0.1",
   "description": "A discord bot made primarily with node.js, discord.js and SauceNAO API, which lets you reverse image search images",
-  "main": "index.js",
+  "main": "sauce.js",
   "dependencies": {
     "discord.js": "^11.4.2",
     "is-image-url": "^1.1.8",
@@ -15,12 +15,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ExillustX/sauceBot.git"
+    "url": "git+https://github.com/altinat/sauceBot.git"
   },
-  "author": "ExillustX",
+  "author": "altinat",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ExillustX/sauceBot/issues"
+    "url": "https://github.com/altinat/sauceBot/issues"
   },
-  "homepage": "https://github.com/ExillustX/sauceBot#readme"
+  "homepage": "https://github.com/altinat/sauceBot#readme"
 }
