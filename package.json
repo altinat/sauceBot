@@ -15,12 +15,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/altinat/sauceBot.git"
+    "url": "git+https://github.com/ExillustX/sauceBot.git"
   },
-  "author": "altinat",
+  "author": "ExillustX",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/altinat/sauceBot/issues"
+    "url": "https://github.com/ExillustX/sauceBot/issues"
   },
-  "homepage": "https://github.com/altinat/sauceBot#readme"
+  "homepage": "https://github.com/ExillustX/sauceBot#readme"
 }

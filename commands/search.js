@@ -32,6 +32,7 @@ exports.run = (bot, msg, args) => {
               'name': 'ความคล้าย',
               'value': `${results.similarity}%`
             }, {
+<<<<<<< HEAD
               'name': 'มาจาก',
               'value': results.material
             }, {
@@ -41,6 +42,8 @@ exports.run = (bot, msg, args) => {
               'name': 'เจ้าของผลงาน',
               'value': results.creator
             }, {
+=======
+>>>>>>> parent of 3715864... v0.2
               'name': 'ที่มา',
               'value': `${results.site} - ${results.url}`
             }],
