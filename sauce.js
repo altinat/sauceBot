@@ -3,7 +3,6 @@ const fs = require('fs');
 const { Client } = require('discord.js');
 const discordClient = new Client();
 const commandsMap = new Map();
-/// const SauceNAO = require('saucenao')
 
 const config = (() => {
   if (!fs.existsSync('config.json')) {
@@ -60,10 +59,10 @@ discordClient.on('message', message => {
     return;
   }
   let { content } = message;
-  if (!content.startsWith(process.env.prefix)) {
+  if (!content.startsWith(config.prefix)) {
     return;
   }
-  let split = content.substr(process.env.prefix.length).split(' ');
+  let split = content.substr(config.prefix.length).split(' ');
   let label = split[0];
   let args = split.slice(1);
   if (commandsMap.get(label)) {
@@ -71,4 +70,4 @@ discordClient.on('message', message => {
   }
 });
 
-process.env.token && discordClient.login(process.env.token);
+config.token && discordClient.login(config.token);

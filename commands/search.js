@@ -1,8 +1,9 @@
+const config = require('../config.json'),
   sagiri = require('sagiri'),
   isImageUrl = require('is-image-url'),
   path = require('path'),
   notSupportedExts = new Set(['gif']),
-  search = new sagiri(process.env.saucenaoAPIKey, {
+  search = new sagiri(config.saucenaoAPIKey, {
     numRes: 1
   });
 
