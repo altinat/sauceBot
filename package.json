@@ -1,7 +1,7 @@
 {
   "name": "saucebot",
-  "version": "1.0.1",
-  "description": "A discord bot made primarily with node.js, discord.js and SauceNAO API, which lets you reverse image search images",
+  "version": "1.1",
+  "description": "บอทค้นหารูปภาพอนิเมะ โดยมี Node.js เป็นฐาน",
   "main": "sauce.js",
   "dependencies": {
     "discord.js": "^11.4.2",
