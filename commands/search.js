@@ -13,6 +13,7 @@ exports.run = (bot, msg, args) => {
       let data = response[0];
       console.log(response)
       let results = {
+        title: data.original.header.title || 'ผลงานไม่มีชื่อ',
         thumbnail: data.original.header.thumbnail,
         similarity: data.similarity,
         material: data.original.data.material || 'ไม่พบ',
@@ -25,10 +26,7 @@ exports.run = (bot, msg, args) => {
       if (minSimilarity <= ~~results.similarity) {
         msg.channel.send({
           embed: {
-            title: 'นักหาวาร์ป',
-            image: {
-              url: results.thumbnail
-            },
+            title: 'เจอใน ' + results.site,
             thumbnail: {
               url: results.thumbnail
             },
@@ -36,14 +34,13 @@ exports.run = (bot, msg, args) => {
               `ตัวละคร: **${results.characters} **\n` +
               `เจ้าของผลงาน: **${results.creator} **\n` +
               `ที่มา: **[${results.site}](${results.url}) **`,
-              image: {
-              url: results.thumbnail
-            },
             fields: [{
               name: 'ความเป็นไปได้อื่น ๆ',
-              value: "ยังไม่เสร็จ"
+              value: `**[${response[1].site}](${response[1].url}) **: ${response[1].similarity}%\n` +
+              `**[${response[2].site}](${response[2].url}) **: ${response[2].similarity}%\n` +
+              `**[${response[3].site}](${response[3].url}) **: ${response[3].similarity}%\n`
             }],
-            color: 0xff0000,
+            color: 0x28b5b5,
 			footer: {
 			icon_url: msg.author.displayAvatarURL,
 			text: `รีเควสโดย ${msg.author.username} \n` +

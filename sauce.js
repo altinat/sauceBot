@@ -46,6 +46,7 @@ fs.readdirSync(path.resolve(__dirname, 'commands'))
 
 discordClient.on('ready', () => {
   console.log(`Logged in as ${discordClient.user.tag} (ID: ${discordClient.user.id})!`);
+  discordClient.user.setPresence({ game: { name: config.presence }})
   discordClient.generateInvite([
     'SEND_MESSAGES',
     'MANAGE_MESSAGES',
