@@ -36,9 +36,9 @@ exports.run = (bot, msg, args) => {
               `ที่มา: **[${results.site}](${results.url}) **`,
             fields: [{
               name: 'ความเป็นไปได้อื่น ๆ',
-              value: `**[${response[1].site}](${response[1].url}) **: ${response[1].similarity}%\n` +
-              `**[${response[2].site}](${response[2].url}) **: ${response[2].similarity}%\n` +
-              `**[${response[3].site}](${response[3].url}) **: ${response[3].similarity}%\n`
+              value: "`" + response[1].similarity + "%` : [" + response[1].site + "](" + response[1].url + ")\n" +
+              "`" + response[2].similarity + "%` : [" + response[2].site + "](" + response[2].url + ")\n" +
+              "`" + response[3].similarity + "%` : [" + response[3].site + "](" + response[3].url + ")\n"
             }],
             color: 0x28b5b5,
 			footer: {
