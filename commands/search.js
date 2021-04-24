@@ -49,36 +49,36 @@ exports.run = (bot, msg, args) => {
           },
         });
       } else {
-        console.error('ไม่พบผลลัพธ์');
+        console.error('ไม่พบผลลัพธ์ ส่งโดย ' + msg.author.tag);
         msg.channel.send('ไม่พบผลลัพธ์');
       }
     }).catch((error) => {
       console.error(error.message);
       error = error.toString();
       if (error.includes('ต้องแนบภาพมาด้วย') || error.includes('ไม่สามารถใช้ URL นี้ได้') || error.includes('ข้อผิดพลาด: ได้รับการตอบสนองเป็น HTML แทนที่จะเป็น JSON')) {
-        console.error('API ผิดพลาด!');
+        console.error('API ผิดพลาด! ส่งโดย ' + msg.author.tag);
         msg.channel.send('API ผิดพลาด!');
         return;
       }
     });
   };
   if (!msg.attachments.array()[0] && !args[0]) {
-    console.error('ไม่พบไฟล์แนบหรือ URL ของภาพ');
+    console.error('ไม่พบไฟล์แนบหรือ URL ของภาพ ส่งโดย ' + msg.author.tag);
     msg.channel.send('โปรดแนบภาพหรือ URL ของภาพ');
   } else if (msg.attachments.array()[0]) {
-    console.log('พบไฟล์แนบ');
+    console.log('พบไฟล์แนบ ส่งโดย ' + msg.author.tag);
     if (isImageUrl(msg.attachments.array()[0].url) && !notSupportedExts.has(path.extname(msg.attachments.array()[0].url).slice(1).toLowerCase())) {
       getSauce(msg.attachments.array()[0].url);
     } else {
-      console.error('ไฟล์หรือนามสกุลของไฟล์ที่แนบมาไม่ใช่รูปภาพ');
+      console.error('ไฟล์หรือนามสกุลของไฟล์ที่แนบมาไม่ใช่รูปภาพ ส่งโดย ' + msg.author.tag);
       msg.channel.send('ไฟล์หรือนามสกุลของไฟล์ที่แนบมาไม่ใช่รูปภาพ');
     }
   } else if (args[0]) {
-    console.log('พบ URL');
+    console.log('พบ URL ส่งโดย ' + msg.author.tag);
     if (isImageUrl(args[0]) && !notSupportedExts.has(path.extname(args[0]).slice(1).toLowerCase())) {
       getSauce(args[0]);
     } else {
-      console.error('ไฟล์หรือนามสกุลของไฟล์ที่แนบมาไม่ใช่รูปภาพ');
+      console.error('ไฟล์หรือนามสกุลของไฟล์ที่แนบมาไม่ใช่รูปภาพ ส่งโดย ' + msg.author.tag);
       msg.channel.send('ไฟล์หรือนามสกุลของไฟล์ที่แนบมาไม่ใช่รูปภาพ');
     }
   }
