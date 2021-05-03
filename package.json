@@ -10,6 +10,7 @@
     "fetch-base64": "^2.1.2",
     "form-data": "^2.3.3",
     "is-image-url": "^1.1.8",
+    "request": "^2.88.2",
     "request-promise": "^4.2.6",
     "sagiri": "^2.0.3"
   },
