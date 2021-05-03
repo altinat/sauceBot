@@ -1,5 +1,5 @@
 # sauceBot
-A discord bot made primarily with node.js, discord.js and SauceNAO API, which lets you reverse image search images
+บอทดิสคอร์ด สำหรับใช้ค้นหาซอร์สรูป และยังสามารถใช้ค้นหาอนิเมะจากรูปสกรีนชอร์ทได้ (ทำงานด้วย trace.moe API)
 
 ## Screenshots
 
