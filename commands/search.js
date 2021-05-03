@@ -8,7 +8,16 @@ const sagiri = require('sagiri'),
   require('dotenv').config(),
 
 exports.run = async (bot, msg, args) => {
-  const msge = await msg.channel.send("กำลังค้นหา");
+  const msge = await msg.channel.send({
+      embed: {
+        "title": `กำลังค้นหา`,
+        "color": 2667957,
+        "footer": {
+          "text": `รีเควสโดย ${msg.author.username}`,
+          "icon_url": msg.author.displayAvatarURL()
+        }
+      }
+    });
   let getSauce = function (image) {
     search.getSauce(image).then(response => {
       let data = response[0];
@@ -55,25 +64,61 @@ exports.run = async (bot, msg, args) => {
       }
     }).catch((error) => {
       console.error(error.message);
-      msge.edit('API ผิดพลาด!');
+      msge.edit({
+        embed: {
+          "title": `API ผิดพลาด`,
+          "color": 2667957,
+          "footer": {
+            "text": `รีเควสโดย ${msg.author.username}`,
+            "icon_url": msg.author.displayAvatarURL()
+          }
+        }
+      });
       error = error.toString();
       if (error.includes('ต้องแนบภาพมาด้วย') || error.includes('ไม่สามารถใช้ URL นี้ได้') || error.includes('ข้อผิดพลาด: ได้รับการตอบสนองเป็น HTML แทนที่จะเป็น JSON')) {
         console.error('🎴ค้นหาซอร์สรูปภาพ\nAPI ผิดพลาด! ส่งโดย ' + msg.author.tag);
-        msge.edit('API ผิดพลาด!');
+        msge.edit({
+          embed: {
+            "title": `API ผิดพลาด`,
+            "color": 2667957,
+            "footer": {
+              "text": `รีเควสโดย ${msg.author.username}`,
+              "icon_url": msg.author.displayAvatarURL()
+            }
+          }
+        });
         return;
       }
     });
   };
   if (!msg.attachments.array()[0] && !args[0]) {
     console.error('🎴ค้นหาซอร์สรูปภาพ\nไม่พบไฟล์แนบหรือ URL ของภาพ ส่งโดย ' + msg.author.tag);
-    msg.channel.send('โปรดแนบภาพหรือ URL ของภาพ');
+    msg.channel.send({
+      embed: {
+        "title": `โปรดแนบภาพหรือ URL ของภาพ`,
+        "color": 2667957,
+        "footer": {
+          "text": `รีเควสโดย ${msg.author.username}`,
+          "icon_url": msg.author.displayAvatarURL()
+        }
+      }
+    });
   } else if (msg.attachments.array()[0]) {
     console.log('🎴ค้นหาซอร์สรูปภาพ\nพบไฟล์แนบ ส่งโดย ' + msg.author.tag);
     if (isImageUrl(msg.attachments.array()[0].url) && !notSupportedExts.has(path.extname(msg.attachments.array()[0].url).slice(1).toLowerCase())) {
       getSauce(msg.attachments.array()[0].url);
     } else {
       console.error('🎴ค้นหาซอร์สรูปภาพ\nไฟล์หรือนามสกุลของไฟล์ที่แนบมาไม่ใช่รูปภาพ ส่งโดย ' + msg.author.tag);
-      msg.channel.send('ไฟล์หรือนามสกุลของไฟล์ที่แนบมาไม่ใช่รูปภาพ');
+      msg.channel.send({
+        embed: {
+          "title": `ไฟล์หรือนามสกุลของไฟล์ที่แนบมาไม่ใช่รูปภาพ`,
+          "color": 2667957,
+          "footer": {
+            "text": `รีเควสโดย ${msg.author.username}`,
+            "icon_url": msg.author.displayAvatarURL()
+          }
+        }
+      });
     }
   } else if (args[0]) {
     console.log('🎴ค้นหาซอร์สรูปภาพ\nพบ URL ส่งโดย ' + msg.author.tag);
@@ -81,7 +126,16 @@ exports.run = async (bot, msg, args) => {
       getSauce(args[0]);
     } else {
       console.error('🎴ค้นหาซอร์สรูปภาพ\nไฟล์หรือนามสกุลของไฟล์ที่แนบมาไม่ใช่รูปภาพ ส่งโดย ' + msg.author.tag);
-      msg.channel.send('ไฟล์หรือนามสกุลของไฟล์ที่แนบมาไม่ใช่รูปภาพ');
+      msg.channel.send({
+        embed: {
+          "title": `ไฟล์หรือนามสกุลของไฟล์ที่แนบมาไม่ใช่รูปภาพ`,
+          "color": 2667957,
+          "footer": {
+            "text": `รีเควสโดย ${msg.author.username}`,
+            "icon_url": msg.author.displayAvatarURL()
+          }
+        }
+      });
     }
   }
 };

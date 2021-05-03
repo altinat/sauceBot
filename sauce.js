@@ -7,6 +7,15 @@ const discordClient = new Client();
 const commandsMap = new Map();
 const config = require('dotenv').config()
 
+if (!fs.existsSync('.env')) {
+  console.error(`ไม่พบไฟล์ .env`);
+  process.exit(1);
+}
+if (process.env.token == `YOUR DISCORD BOT TOKEN HERE`) {
+  console.error(`กรุณาใส่โทเคนบอทในไฟล์ .env`);
+  process.exit(1);
+}
+
 /*const config = (() => {
   if (!fs.existsSync('config.json')) {
     console.error(`There is an error with the config file.`);
