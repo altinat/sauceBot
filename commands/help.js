@@ -22,7 +22,7 @@ exports.run = (bot, msg, args) => {
   });
 };
 exports.help = {
-  name: 'จ๋า',
-  usage: 'จ๋า',
+  name: '!',
+  usage: '!',
   description: 'Help command.'
 };
