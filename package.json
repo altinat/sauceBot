@@ -1,15 +1,16 @@
 {
   "name": "saucebot",
-  "version": "1.2",
+  "version": "1.2.1",
   "description": "บอทค้นหารูปภาพอนิเมะ โดยมี Node.js เป็นฐาน",
   "main": "sauce.js",
   "dependencies": {
     "anilist-node": "^1.7.0",
-    "discord.js": "^11.4.2",
+    "discord.js": "^12.5.3",
     "fetch-base64": "^2.1.2",
+    "form-data": "^2.3.3",
     "is-image-url": "^1.1.8",
     "request-promise": "^4.2.6",
-    "sagiri": "^1.5.2"
+    "sagiri": "^2.0.3"
   },
   "scripts": {
     "start": "node sauce.js",
