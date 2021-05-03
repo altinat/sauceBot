@@ -1,6 +1,6 @@
 {
   "token": "YOUR DISCORD BOT TOKEN HERE",
   "saucenaoAPIKey": "YOUR SAUCENAO API KEY HERE",
-  "prefix": "ซอ",
-  "presence": "ค้นหาด้วยคำสัง ซอส"
+  "prefix": "ซอส",
+  "presence": "ซอส! เพื่อดูคำสั่ง"
 }

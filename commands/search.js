@@ -84,7 +84,7 @@ exports.run = (bot, msg, args) => {
   }
 };
 exports.help = {
-  name: 'ส',
-  usage: 'ส',
+  name: 'รูป',
+  usage: 'รูป',
   description: 'หาวาร์ปรูป'
 };
