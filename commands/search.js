@@ -7,7 +7,8 @@ const config = require('../config.json'),
     numRes: 1
   });
 
-exports.run = (bot, msg, args) => {
+exports.run = async (bot, msg, args) => {
+  const msge = await msg.channel.send("กำลังค้นหา");
   let getSauce = function(image) {
     search.getSauce(image).then(response => {
       let data = response[0];
@@ -24,7 +25,7 @@ exports.run = (bot, msg, args) => {
       };
       const minSimilarity = 30;
       if (minSimilarity <= ~~results.similarity) {
-        msg.channel.send({
+        msge.edit({
           embed: {
             title: 'เจอใน ' + results.site,
             thumbnail: {
@@ -49,36 +50,36 @@ exports.run = (bot, msg, args) => {
           },
         });
       } else {
-        console.error('ไม่พบผลลัพธ์ ส่งโดย ' + msg.author.tag);
-        msg.channel.send('ไม่พบผลลัพธ์');
+        console.error('🎴ค้นหาซอร์สรูปภาพ\nไม่พบผลลัพธ์ ส่งโดย ' + msg.author.tag);
+        msge.edit('ไม่พบผลลัพธ์');
       }
     }).catch((error) => {
       console.error(error.message);
       error = error.toString();
       if (error.includes('ต้องแนบภาพมาด้วย') || error.includes('ไม่สามารถใช้ URL นี้ได้') || error.includes('ข้อผิดพลาด: ได้รับการตอบสนองเป็น HTML แทนที่จะเป็น JSON')) {
-        console.error('API ผิดพลาด! ส่งโดย ' + msg.author.tag);
-        msg.channel.send('API ผิดพลาด!');
+        console.error('🎴ค้นหาซอร์สรูปภาพ\nAPI ผิดพลาด! ส่งโดย ' + msg.author.tag);
+        msge.edit('API ผิดพลาด!');
         return;
       }
     });
   };
   if (!msg.attachments.array()[0] && !args[0]) {
-    console.error('ไม่พบไฟล์แนบหรือ URL ของภาพ ส่งโดย ' + msg.author.tag);
+    console.error('🎴ค้นหาซอร์สรูปภาพ\nไม่พบไฟล์แนบหรือ URL ของภาพ ส่งโดย ' + msg.author.tag);
     msg.channel.send('โปรดแนบภาพหรือ URL ของภาพ');
   } else if (msg.attachments.array()[0]) {
-    console.log('พบไฟล์แนบ ส่งโดย ' + msg.author.tag);
+    console.log('🎴ค้นหาซอร์สรูปภาพ\nพบไฟล์แนบ ส่งโดย ' + msg.author.tag);
     if (isImageUrl(msg.attachments.array()[0].url) && !notSupportedExts.has(path.extname(msg.attachments.array()[0].url).slice(1).toLowerCase())) {
       getSauce(msg.attachments.array()[0].url);
     } else {
-      console.error('ไฟล์หรือนามสกุลของไฟล์ที่แนบมาไม่ใช่รูปภาพ ส่งโดย ' + msg.author.tag);
+      console.error('🎴ค้นหาซอร์สรูปภาพ\nไฟล์หรือนามสกุลของไฟล์ที่แนบมาไม่ใช่รูปภาพ ส่งโดย ' + msg.author.tag);
       msg.channel.send('ไฟล์หรือนามสกุลของไฟล์ที่แนบมาไม่ใช่รูปภาพ');
     }
   } else if (args[0]) {
-    console.log('พบ URL ส่งโดย ' + msg.author.tag);
+    console.log('🎴ค้นหาซอร์สรูปภาพ\nพบ URL ส่งโดย ' + msg.author.tag);
     if (isImageUrl(args[0]) && !notSupportedExts.has(path.extname(args[0]).slice(1).toLowerCase())) {
       getSauce(args[0]);
     } else {
-      console.error('ไฟล์หรือนามสกุลของไฟล์ที่แนบมาไม่ใช่รูปภาพ ส่งโดย ' + msg.author.tag);
+      console.error('🎴ค้นหาซอร์สรูปภาพ\nไฟล์หรือนามสกุลของไฟล์ที่แนบมาไม่ใช่รูปภาพ ส่งโดย ' + msg.author.tag);
       msg.channel.send('ไฟล์หรือนามสกุลของไฟล์ที่แนบมาไม่ใช่รูปภาพ');
     }
   }

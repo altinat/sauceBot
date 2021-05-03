@@ -45,13 +45,14 @@ fs.readdirSync(path.resolve(__dirname, 'commands'))
   });
 
 discordClient.on('ready', () => {
-  console.log(`Logged in as ${discordClient.user.tag} (ID: ${discordClient.user.id})!`);
-  discordClient.user.setPresence({ activity: { name: config.presence }})
+  console.log(`👌เข้าสู่ระบบด้วย ${discordClient.user.tag} (ID: ${discordClient.user.id})`);
+  discordClient.user.setPresence({ activity: { name: config.presence }});
+  console.log(`📢Presence คือ \"${config.presence}\"`);
   discordClient.generateInvite({
     permissions: [
     'SEND_MESSAGES',
     'MANAGE_MESSAGES',
-  ]}).then(invite => console.log(`Click here to invite the bot to your server:\n${invite}`));
+  ]}).then(invite => console.log(`👋 ใช้ลิงก์นี้เพื่อเชิญบอทเข้าสู่เซิร์ฟเวอร์: ${invite}\n----------Log----------`));
 });
 
 discordClient.on('message', message => {
