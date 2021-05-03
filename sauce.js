@@ -1,6 +1,8 @@
 const path = require('path');
 const fs = require('fs');
-const { Client } = require('discord.js');
+const {
+  Client
+} = require('discord.js');
 const discordClient = new Client();
 const commandsMap = new Map();
 
@@ -33,33 +35,38 @@ fs.readdirSync(path.resolve(__dirname, 'commands'))
       let command = require(`./commands/${f}`);
       if (typeof command.run !== 'function') {
         throw 'Command is missing a run function!';
-      }
-      else if (!command.help || !command.help.name) {
+      } else if (!command.help || !command.help.name) {
         throw 'Command is missing a valid help object!';
       }
       commandsMap.set(command.help.name, command);
-    }
-    catch (error) {
+    } catch (error) {
       console.error(`Couldn't load command ${f}: ${error}`);
     }
   });
 
 discordClient.on('ready', () => {
   console.log(`👌เข้าสู่ระบบด้วย ${discordClient.user.tag} (ID: ${discordClient.user.id})`);
-  discordClient.user.setPresence({ activity: { name: config.presence }});
+  discordClient.user.setPresence({
+    activity: {
+      name: config.presence
+    }
+  });
   console.log(`📢Presence คือ \"${config.presence}\"`);
   discordClient.generateInvite({
     permissions: [
-    'SEND_MESSAGES',
-    'MANAGE_MESSAGES',
-  ]}).then(invite => console.log(`👋 ใช้ลิงก์นี้เพื่อเชิญบอทเข้าสู่เซิร์ฟเวอร์: ${invite}\n----------Log----------`));
+      'SEND_MESSAGES',
+      'MANAGE_MESSAGES',
+    ]
+  }).then(invite => console.log(`👋 ใช้ลิงก์นี้เพื่อเชิญบอทเข้าสู่เซิร์ฟเวอร์: ${invite}\n----------Log----------`));
 });
 
 discordClient.on('message', message => {
   if (message.author.bot || !message.guild) {
     return;
   }
-  let { content } = message;
+  let {
+    content
+  } = message;
   if (!content.startsWith(config.prefix)) {
     return;
   }

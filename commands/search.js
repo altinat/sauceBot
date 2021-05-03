@@ -9,7 +9,7 @@ const config = require('../config.json'),
 
 exports.run = async (bot, msg, args) => {
   const msge = await msg.channel.send("กำลังค้นหา");
-  let getSauce = function(image) {
+  let getSauce = function (image) {
     search.getSauce(image).then(response => {
       let data = response[0];
       console.log(response)
@@ -38,15 +38,15 @@ exports.run = async (bot, msg, args) => {
             fields: [{
               name: 'ความเป็นไปได้อื่น ๆ',
               value: "`" + response[1].similarity + "%` : [" + response[1].site + "](" + response[1].url + ")\n" +
-              "`" + response[2].similarity + "%` : [" + response[2].site + "](" + response[2].url + ")\n" +
-              "`" + response[3].similarity + "%` : [" + response[3].site + "](" + response[3].url + ")\n"
+                "`" + response[2].similarity + "%` : [" + response[2].site + "](" + response[2].url + ")\n" +
+                "`" + response[3].similarity + "%` : [" + response[3].site + "](" + response[3].url + ")\n"
             }],
             color: 0x28b5b5,
-			footer: {
-			icon_url: msg.author.displayAvatarURL(),
-			text: `รีเควสโดย ${msg.author.username} \n` +
-			`ความเป็นไปได้: ${results.similarity}% \n`,
-			},
+            footer: {
+              icon_url: msg.author.displayAvatarURL(),
+              text: `รีเควสโดย ${msg.author.username} \n` +
+                `ความเป็นไปได้: ${results.similarity}% \n`,
+            },
           },
         });
       } else {

@@ -17,7 +17,7 @@ exports.run = (bot, msg, args) => {
       footer: {
         icon_url: msg.author.displayAvatarURL,
         text: `รีเควสโดย ${msg.author.username}`
-        },
+      },
     }
   });
 };
