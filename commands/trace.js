@@ -15,7 +15,7 @@ exports.run = async (bot, msg, args) => {
   const anime = await wa.parsejson(json);
   console.log(`🔍ค้นหาอนิเมะ\nส่งโดย ` + msg.author.tag);
   console.log(anime);
-  msge.edit(`ชื่อเรื่อง ${anime.title_romaji} ตอนที่ ${anime.episode} เวลา ${anime.at} ${anime.link}`);
+  msge.edit(`${anime.title_romaji} ตอนที่ ${anime.episode} เวลา ${anime.at} ${anime.link}`);
 };
 exports.help = {
   name: 'เมะ',
