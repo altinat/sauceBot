@@ -43,7 +43,7 @@ exports.run = async (bot, msg, args) => {
             }],
             color: 0x28b5b5,
 			footer: {
-			icon_url: msg.author.displayAvatarURL,
+			icon_url: msg.author.displayAvatarURL(),
 			text: `รีเควสโดย ${msg.author.username} \n` +
 			`ความเป็นไปได้: ${results.similarity}% \n`,
 			},
