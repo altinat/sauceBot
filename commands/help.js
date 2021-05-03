@@ -1,15 +1,15 @@
-const config = require('../config.json');
+require('dotenv').config()
 
 exports.run = (bot, msg, args) => {
   msg.channel.send({
     embed: {
       title: 'Help command',
       fields: [{
-          name: config.prefix + 'รูป',
+          name: process.env.prefix + 'รูป',
           value: 'เพื่อหาวาร์ปรูป'
         },
         {
-          name: config.prefix + 'เมะ',
+          name: process.env.prefix + 'เมะ',
           value: 'เพื่อหาเมะ'
         }
       ],
@@ -22,7 +22,7 @@ exports.run = (bot, msg, args) => {
   });
 };
 exports.help = {
-  name: '!',
-  usage: '!',
+  name: '+',
+  usage: '+',
   description: 'Help command.'
 };

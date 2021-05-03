@@ -1,11 +1,11 @@
-const config = require('../config.json'),
-  sagiri = require('sagiri'),
+const sagiri = require('sagiri'),
   isImageUrl = require('is-image-url'),
   path = require('path'),
   notSupportedExts = new Set(['gif']),
-  search = new sagiri(config.saucenaoAPIKey, {
+  search = new sagiri(process.env.saucenaoAPIKey, {
     numRes: 1
   });
+  require('dotenv').config(),
 
 exports.run = async (bot, msg, args) => {
   const msge = await msg.channel.send("กำลังค้นหา");

@@ -5,8 +5,9 @@ const {
 } = require('discord.js');
 const discordClient = new Client();
 const commandsMap = new Map();
+const config = require('dotenv').config()
 
-const config = (() => {
+/*const config = (() => {
   if (!fs.existsSync('config.json')) {
     console.error(`There is an error with the config file.`);
     process.exit(1);
@@ -22,7 +23,7 @@ const config = (() => {
     console.error(`Please fill out the token in config file.`);
   }
   return json;
-})();
+})();*/
 
 discordClient.config = config;
 discordClient.commands = commandsMap;
@@ -48,10 +49,10 @@ discordClient.on('ready', () => {
   console.log(`👌เข้าสู่ระบบด้วย ${discordClient.user.tag} (ID: ${discordClient.user.id})`);
   discordClient.user.setPresence({
     activity: {
-      name: config.presence
+      name: process.env.presence
     }
   });
-  console.log(`📢Presence คือ \"${config.presence}\"`);
+  console.log(`📢Presence คือ \"${process.env.presence}\"`);
   discordClient.generateInvite({
     permissions: [
       'SEND_MESSAGES',
@@ -67,10 +68,10 @@ discordClient.on('message', message => {
   let {
     content
   } = message;
-  if (!content.startsWith(config.prefix)) {
+  if (!content.startsWith(process.env.prefix)) {
     return;
   }
-  let split = content.substr(config.prefix.length).split(' ');
+  let split = content.substr(process.env.prefix.length).split(' ');
   let label = split[0];
   let args = split.slice(1);
   if (commandsMap.get(label)) {
@@ -78,4 +79,4 @@ discordClient.on('message', message => {
   }
 });
 
-config.token && discordClient.login(config.token);
+process.env.token && discordClient.login(process.env.token);
