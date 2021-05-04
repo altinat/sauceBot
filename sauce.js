@@ -40,17 +40,17 @@ discordClient.commands = commandsMap;
 fs.readdirSync(path.resolve(__dirname, 'commands'))
   .filter(f => f.endsWith('.js'))
   .forEach(f => {
-    console.log(`Loading command ${f}`);
+    console.log(`กำลังโหลดคำสั่ง ${f}`);
     try {
       let command = require(`./commands/${f}`);
       if (typeof command.run !== 'function') {
-        throw 'Command is missing a run function!';
+        throw 'คำสั่งไม่มีฟังชันรัน!';
       } else if (!command.help || !command.help.name) {
         throw 'Command is missing a valid help object!';
       }
       commandsMap.set(command.help.name, command);
     } catch (error) {
-      console.error(`Couldn't load command ${f}: ${error}`);
+      console.error(`ไม่สามารถโหลดคำสั่ง ${f}: ${error}`);
     }
   });
 

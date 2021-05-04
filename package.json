@@ -1,6 +1,6 @@
 {
   "name": "saucebot",
-  "version": "1.2.3",
+  "version": "1.2.3a",
   "description": "บอทค้นหารูปภาพอนิเมะ โดยมี Node.js เป็นฐาน",
   "main": "sauce.js",
   "dependencies": {

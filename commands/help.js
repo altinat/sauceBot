@@ -15,7 +15,7 @@ exports.run = (bot, msg, args) => {
       ],
       color: 3264944,
       footer: {
-        icon_url: msg.author.displayAvatarURL,
+        icon_url: msg.author.displayAvatarURL(),
         text: `รีเควสโดย ${msg.author.username}`
       },
     }
