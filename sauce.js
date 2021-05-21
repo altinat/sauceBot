@@ -11,28 +11,6 @@ if (!fs.existsSync('.env')) {
   console.error(`ไม่พบไฟล์ .env`);
   process.exit(1);
 }
-if (process.env.token == `YOUR DISCORD BOT TOKEN HERE`) {
-  console.error(`กรุณาใส่โทเคนบอทในไฟล์ .env`);
-  process.exit(1);
-}
-
-/*const config = (() => {
-  if (!fs.existsSync('config.json')) {
-    console.error(`There is an error with the config file.`);
-    process.exit(1);
-  }
-  let json;
-  try {
-    json = JSON.parse(fs.readFileSync('config.json').toString());
-  } catch (error) {
-    console.error(`Couldn't load/parse the config file`);
-    process.exit(1);
-  }
-  if (json.token && !/^[a-zA-Z0-9_\.\-]{59}$/.test(json.token)) {
-    console.error(`Please fill out the token in config file.`);
-  }
-  return json;
-})();*/
 
 discordClient.config = config;
 discordClient.commands = commandsMap;
